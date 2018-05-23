@@ -8,11 +8,12 @@ except ImportError:
 
 setup(
     name='storyblok',
-    version='0.1.0',
+    version='0.1.1',
     description='Storyblok API library client for python',
     author='Dominik Angerer',
     author_email='da@storyblok.com',
-    url='https://api.storyblok.com',
+    url='https://github.com/storyblok/storyblok-python-sdk',
+    download_url = 'https://github.com/storyblok/storyblok-python-sdk/archive/0.1.1.tar.gz',
     license='MIT',
     install_requires=[
         'requests >= 2.1.0'
