@@ -19,7 +19,10 @@ setup(
         'requests >= 2.1.0'
     ],
     packages=[
-        'storyblok'
+        'storyblok',
+        'storyblok.api',
+        'storyblok.error',
+        'storyblok.http_client',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
