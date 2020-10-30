@@ -16,7 +16,7 @@ class Stories(object):
         """
         body = options['query'] if 'query' in options else {}
 
-        response = self.client.get('/cdn/stories/', body, options)
+        response = self.client.get('/cdn/stories/?token=' + token, body, options)
 
         return response
 

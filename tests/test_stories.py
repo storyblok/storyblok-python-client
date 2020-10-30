@@ -1,0 +1,67 @@
+import pytest
+import storyblok
+
+public_token  = "KOesmZuJLW2Yy7QJcMuFPQtt"
+preview_token = "Nb8l74hQYP1hrrIA0lE7Lwtt"
+
+@pytest.fixture
+def stories():
+    client = storyblok.Client()
+    return client.stories()
+
+def test_stories_list_published(stories):
+    response = stories.list(public_token)
+
+    assert response.code == 200
+    assert 'stories' in response.body.keys()
+    assert type(response.body['stories']) is list
+
+    first_story = response.body['stories'][0]
+    assert 'id'           in first_story.keys()
+    assert 'name'         in first_story.keys()
+    assert 'created_at'   in first_story.keys()
+    assert 'published_at' in first_story.keys()
+    assert 'uuid'         in first_story.keys()
+    assert 'uuid'         in first_story.keys()
+    assert 'content'      in first_story.keys()
+    assert 'slug'         in first_story.keys()
+    assert 'full_slug'    in first_story.keys()
+    assert 'tag_list'     in first_story.keys()
+
+def test_stories_list_draft(stories):
+    response = stories.list(preview_token, {"query": { "version": "draft"}})
+
+    assert response.code == 200
+    assert 'stories' in response.body.keys()
+    assert type(response.body['stories']) is list
+
+    first_story = response.body['stories'][0]
+    assert 'id'           in first_story.keys()
+    assert 'name'         in first_story.keys()
+    assert 'created_at'   in first_story.keys()
+    assert 'published_at' in first_story.keys()
+    assert 'uuid'         in first_story.keys()
+    assert 'uuid'         in first_story.keys()
+    assert 'content'      in first_story.keys()
+    assert 'slug'         in first_story.keys()
+    assert 'full_slug'    in first_story.keys()
+    assert 'tag_list'     in first_story.keys()
+
+def test_stories_list_simple_querying(stories):
+    response = stories.list("KOesmZuJLW2Yy7QJcMuFPQtt", {"query": { "with_tag": "tag_from_my_second_folder"}})
+
+    assert response.code == 200
+    assert 'stories' in response.body.keys()
+    assert type(response.body['stories']) is list
+    for story in response.body['stories']:
+      assert story['tag_list'][0] == "tag_from_my_second_folder"
+
+def test_stories_list_with_multi_params_querying(stories):
+    response = stories.list(preview_token, {"query": { "is_startpage": "false", "with_tag": "tag_from_my_second_folder"}})
+
+    assert response.code == 200
+    assert 'stories' in response.body.keys()
+    assert type(response.body['stories']) is list
+    for story in response.body['stories']:
+      assert story['tag_list'][0] == "tag_from_my_second_folder"
+      assert story['is_startpage'] == False
