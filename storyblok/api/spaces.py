@@ -16,7 +16,7 @@ class Spaces(object):
         """
         body = options['query'] if 'query' in options else {}
 
-        response = self.client.get('/cdn/spaces/me', body, options)
+        response = self.client.get('/cdn/spaces/me?token=' + token, body, options)
 
         return response
 
