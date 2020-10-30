@@ -215,6 +215,21 @@ The following arguments are required:
 ```python
 response = datasource_entries.list("your_access_token", "labels", "de-at", options)
 ```
+## Testing
+Install the testing tool
+```bash
+pip install -U pytest==6.1.2
+```
+
+Inside of the directory project set the `PYTHONPATH` to help the test suite find the module
+```bash
+export PYTHONPATH=.
+```
+
+Run the test suite:
+```bash
+pytest
+```
 
 ## Contributors
 Here is a list of [Contributors](https://github.com/storyblok/storyblok-python-sdk/contributors)
