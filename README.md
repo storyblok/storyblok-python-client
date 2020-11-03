@@ -127,8 +127,22 @@ The following arguments are required:
 
  * __token__: Public token for published or private token for draft version
 
+Getting a published stories list:
+
+_simple example:_
 ```python
-response = stories.list("your_access_token", "draft", "1", "25", "posts", "1527067945", options)
+response = stories.list("your_access_token")
+```
+_advanced example:_
+```python
+response = stories.list("public_token", {"query": { "with_tag": "tag_from_my_second_folder"}})
+```
+
+Getting a draft stories list:
+
+_simple example:_
+```python
+response = stories.list(preview_token, {"query": { "version": "draft"}})
 ```
 
 ##### Get a story by id (GET /cdn/stories/:story_id)
@@ -139,8 +153,14 @@ The following arguments are required:
 
  * __token__: Public token for published or private token for draft version
 
+Getting a published story:
 ```python
-response = stories.single("your_access_token", "draft", "41252", options)
+response = stories.single("your_access_token", "41252")
+```
+
+Getting a draft story:
+```python
+response = stories.single("your_access_token", "41252", { "query": {"version": "draft"}})
 ```
 
 ### Tags api

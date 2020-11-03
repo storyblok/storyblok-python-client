@@ -28,6 +28,7 @@ class Stories(object):
 
         Args:
             token: Public token for published or private token for draft version
+            story_id: The Id of the story that you want to get
         """
         body = options['query'] if 'query' in options else {}
         body['token'] = token
