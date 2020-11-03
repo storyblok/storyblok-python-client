@@ -34,7 +34,6 @@ class Client(object):
         return Links(self.http_client)
 
     def datasource_entries(self):
-        """Returns tags api instance
+        """Returns DatasourceEntries api instance
         """
         return DatasourceEntries(self.http_client)
-
