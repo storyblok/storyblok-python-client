@@ -200,7 +200,7 @@ The following arguments are required:
  * __token__: Public token for published or private token for draft version
 
 ```python
-response = links.list("your_access_token", "draft", "de", options)
+response = links.list("your_access_token")
 ```
 
 ##### Get a link by id (GET /cdn/links/:id)

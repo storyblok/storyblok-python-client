@@ -1,3 +1,5 @@
+from .param_adapter import body
+
 class Links(object):
 
     """Returns links api instance
@@ -14,9 +16,8 @@ class Links(object):
         Args:
             token: Public token for published or private token for draft version
         """
-        body = options['query'] if 'query' in options else {}
 
-        response = self.client.get('/cdn/links/', body, options)
+        response = self.client.get('/cdn/links/', body(token, options), options)
 
         return response
 
@@ -29,9 +30,8 @@ class Links(object):
             token: Public token for published or private token for draft version
             id: Uuid of the link
         """
-        body = options['query'] if 'query' in options else {}
 
-        response = self.client.get('/cdn/links/' + id + '', body, options)
+        response = self.client.get('/cdn/links/' + id + '', body(token, options), options)
 
         return response
 
