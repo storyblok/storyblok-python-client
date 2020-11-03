@@ -6,7 +6,7 @@ from .api.stories import Stories
 from .api.tags import Tags
 from .api.links import Links
 from .api.datasource_entries import DatasourceEntries
-
+from .api.datasources import Datasources
 
 class Client(object):
 
@@ -32,6 +32,11 @@ class Client(object):
         """Returns links api instance
         """
         return Links(self.http_client)
+
+    def datasources(self):
+        """Returns Datasources api instance
+        """
+        return Datasources(self.http_client)
 
     def datasource_entries(self):
         """Returns DatasourceEntries api instance

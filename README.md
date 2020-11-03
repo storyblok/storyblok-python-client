@@ -216,25 +216,58 @@ The following arguments are required:
 response = links.single("your_access_token", "148ee49a-ad81-4aff-b3d5-a2b4b6739e65", options)
 ```
 
-### Tags api
+### Datasources api
 
-Returns tags api instance
+Returns datasources api instance
+
+```python
+datasources = client.datasources()
+```
+
+##### Get a list of Datasources (GET /cdn/datasources/)
+
+Returns a list of Datasources (https://www.storyblok.com/docs/api/content-delivery#core-resources/datasources/datasources)
+
+The following arguments are required:
+
+ * __token__: Public token
+
+```python
+response = datasources.list("your_access_token")
+```
+
+##### Get a single Datasource (GET /cdn/datasources/:id)
+
+Returns a single Datasources (https://www.storyblok.com/docs/api/content-delivery#core-resources/datasources/datasources)
+
+The following arguments are required:
+
+ * __token__: Public token
+
+```python
+response = datasources.single("your_access_token", 'id')
+```
+
+### DatasourceEntries api
+
+Returns datasource_entries api instance
 
 ```python
 datasource_entries = client.datasource_entries()
 ```
 
-##### Get a list of tags (GET /cdn/datasource_entries/)
+##### Get a list of DatasourceEntries (GET /cdn/datasource_entries/)
 
-Returns a list of tags (https://www.storyblok.com/docs/Delivery-Api/Tags)
+Returns a list of DatasourceEntries (https://www.storyblok.com/docs/api/content-delivery#core-resources/datasource-entries/datasource-entries)
 
 The following arguments are required:
 
- * __token__: Public token for published or private token for draft version
+ * __token__: Public token
 
 ```python
-response = datasource_entries.list("your_access_token", "labels", "de-at", options)
+response = datasource_entries.list("your_access_token")
 ```
+
 ## Testing
 Install the testing tool
 ```bash
