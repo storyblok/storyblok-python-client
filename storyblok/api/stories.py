@@ -1,3 +1,5 @@
+from .param_adapter import body
+
 class Stories(object):
 
     """Returns stories api instance
@@ -14,10 +16,7 @@ class Stories(object):
         Args:
             token: Public token for published or private token for draft version
         """
-        body = options['query'] if 'query' in options else {}
-        body['token'] = token
-
-        response = self.client.get('/cdn/stories/', body, options)
+        response = self.client.get('/cdn/stories/', body(token, options), options)
 
         return response
 
@@ -30,10 +29,8 @@ class Stories(object):
             token: Public token for published or private token for draft version
             story_id: The Id of the story that you want to get
         """
-        body = options['query'] if 'query' in options else {}
-        body['token'] = token
 
-        response = self.client.get('/cdn/stories/' + story_id, body, options)
+        response = self.client.get('/cdn/stories/' + story_id, body(token, options), options)
 
         return response
 

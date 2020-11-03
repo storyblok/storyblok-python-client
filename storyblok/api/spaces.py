@@ -1,3 +1,5 @@
+from .param_adapter import body
+
 class Spaces(object):
 
     """Returns your current space name, published version and domain
@@ -14,10 +16,8 @@ class Spaces(object):
         Args:
             token: Public token for published or private token for draft version
         """
-        body = options['query'] if 'query' in options else {}
-        body['token'] = token
 
-        response = self.client.get('/cdn/spaces/me', body, options)
+        response = self.client.get('/cdn/spaces/me', body(token, options), options)
 
         return response
 

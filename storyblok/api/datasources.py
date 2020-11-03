@@ -1,3 +1,5 @@
+from .param_adapter import body
+
 class Datasources(object):
 
     """Returns Datasources api instance
@@ -14,10 +16,7 @@ class Datasources(object):
         Args:
             token: Public token
         """
-        body = options['query'] if 'query' in options else {}
-        body['token'] = token
-
-        response = self.client.get('/cdn/datasources/', body, options)
+        response = self.client.get('/cdn/datasources/', body(token, options), options)
 
         return response
 
@@ -29,9 +28,6 @@ class Datasources(object):
         Args:
             token: Public token
         """
-        body = options['query'] if 'query' in options else {}
-        body['token'] = token
-
-        response = self.client.get('/cdn/datasources/' + id, body, options)
+        response = self.client.get('/cdn/datasources/' + id, body(token, options), options)
 
         return response
