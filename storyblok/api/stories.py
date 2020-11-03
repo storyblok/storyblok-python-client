@@ -15,8 +15,9 @@ class Stories(object):
             token: Public token for published or private token for draft version
         """
         body = options['query'] if 'query' in options else {}
+        body['token'] = token
 
-        response = self.client.get('/cdn/stories/?token=' + token, body, options)
+        response = self.client.get('/cdn/stories/', body, options)
 
         return response
 
