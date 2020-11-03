@@ -65,3 +65,19 @@ def test_stories_list_with_multi_params_querying(stories):
     for story in response.body['stories']:
       assert story['tag_list'][0] == "tag_from_my_second_folder"
       assert story['is_startpage'] == False
+
+def test_stories_single(stories):
+  response = stories.single(public_token, '18733502')
+  response_body = response.body
+  assert response.code == 200
+  assert 'id'           in response_body['story'].keys()
+  assert 'name'         in response_body['story'].keys()
+  assert 'created_at'   in response_body['story'].keys()
+  assert 'published_at' in response_body['story'].keys()
+  assert 'uuid'         in response_body['story'].keys()
+  assert 'content'      in response_body['story'].keys()
+  assert 'slug'         in response_body['story'].keys()
+  assert 'full_slug'    in response_body['story'].keys()
+  assert 'tag_list'     in response_body['story'].keys()
+  assert 'release_id'   in response_body['story'].keys()
+  assert 'lang'         in response_body['story'].keys()

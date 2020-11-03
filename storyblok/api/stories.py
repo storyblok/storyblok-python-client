@@ -20,7 +20,7 @@ class Stories(object):
 
         return response
 
-    def single(self, token, options={}):
+    def single(self, token, story_id, options={}):
         """Returns a single story by id (https://www.storyblok.com/docs/Delivery-Api/get-a-story#get-a-story-by-id)
 
         '/cdn/stories/:story_id' GET
@@ -29,8 +29,9 @@ class Stories(object):
             token: Public token for published or private token for draft version
         """
         body = options['query'] if 'query' in options else {}
+        body['token'] = token
 
-        response = self.client.get('/cdn/stories/' + story_id + '', body, options)
+        response = self.client.get('/cdn/stories/' + story_id, body, options)
 
         return response
 
