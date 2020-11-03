@@ -15,6 +15,7 @@ class Tags(object):
             token: Public token for published or private token for draft version
         """
         body = options['query'] if 'query' in options else {}
+        body['token'] = token
 
         response = self.client.get('/cdn/tags/', body, options)
 
