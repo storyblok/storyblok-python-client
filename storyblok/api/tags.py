@@ -1,5 +1,3 @@
-from .param_adapter import body
-
 class Tags(object):
 
     """Returns tags api instance
@@ -16,7 +14,7 @@ class Tags(object):
         Args:
             token: Public token for published or private token for draft version
         """
-        response = self.client.get('/cdn/tags/', body(token, options), options)
+        response = self.client.get('/cdn/tags/', token=token, options=options)
 
         return response
 

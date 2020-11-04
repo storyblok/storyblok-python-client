@@ -27,7 +27,7 @@ class Client(object):
     def tags(self):
         """Returns tags api instance
         """
-        return Tags(self.http_client)
+        return Tags(self)
 
     def links(self):
         """Returns links api instance
