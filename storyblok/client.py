@@ -22,7 +22,7 @@ class Client(object):
     def stories(self):
         """Returns stories api instance
         """
-        return Stories(self.http_client)
+        return Stories(self)
 
     def tags(self):
         """Returns tags api instance

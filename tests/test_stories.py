@@ -28,7 +28,7 @@ def test_stories_list_published(stories):
     assert 'tag_list'     in first_story.keys()
 
 def test_stories_list_draft(stories):
-    response = stories.list(preview_token, {"query": { "version": "draft"}})
+    response = stories.list(preview_token, { "version": "draft"})
 
     assert response.code == 200
     assert 'stories' in response.body.keys()
@@ -46,7 +46,7 @@ def test_stories_list_draft(stories):
     assert 'tag_list'     in first_story.keys()
 
 def test_stories_list_simple_querying(stories):
-    response = stories.list(public_token, {"query": { "with_tag": "tag_from_my_second_folder"}})
+    response = stories.list(public_token, { "with_tag": "tag_from_my_second_folder"})
 
     assert response.code == 200
     assert 'stories' in response.body.keys()
@@ -55,7 +55,7 @@ def test_stories_list_simple_querying(stories):
       assert story['tag_list'][0] == "tag_from_my_second_folder"
 
 def test_stories_list_with_multi_params_querying(stories):
-    response = stories.list(preview_token, {"query": { "is_startpage": "false", "with_tag": "tag_from_my_second_folder"}})
+    response = stories.list(preview_token, { "is_startpage": "false", "with_tag": "tag_from_my_second_folder"})
 
     assert response.code == 200
     assert 'stories' in response.body.keys()
@@ -81,7 +81,7 @@ def test_stories_single_published(stories):
   assert 'lang'         in response_body['story'].keys()
 
 def test_stories_single_draft(stories):
-  response = stories.single(preview_token, '18409847', { 'query': {'version': 'draft'}})
+  response = stories.single(preview_token, '18409847', {'version': 'draft'})
   response_body = response.body
   assert response.code == 200
   assert 'id'           in response_body['story'].keys()
