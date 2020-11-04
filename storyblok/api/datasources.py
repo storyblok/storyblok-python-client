@@ -1,5 +1,3 @@
-from .param_adapter import body
-
 class Datasources(object):
 
     """Returns Datasources api instance
