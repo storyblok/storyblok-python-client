@@ -17,7 +17,7 @@ class Client(object):
     def spaces(self):
         """Returns your current space name, published version and domain
         """
-        return Spaces(self.http_client)
+        return Spaces(self)
 
     def stories(self):
         """Returns stories api instance
