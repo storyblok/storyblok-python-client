@@ -66,3 +66,15 @@ class Client(object):
 
       res = self.http_client.post(path, params, options)
       return res
+
+    def put(self, path, token='', auth_token='', params={}, options={}):
+      """ Makes a custom PUT request
+      """
+
+      if(token):
+        params['token'] = token
+      else:
+        options['headers'] = {'Authorization': auth_token }
+
+      res = self.http_client.put(path, params, options)
+      return res

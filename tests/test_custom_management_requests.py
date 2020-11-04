@@ -27,3 +27,12 @@ def test_post(client):
     story = response.body['story']
     assert 'name'           in story.keys()
     assert story['name'] == story_params['story']['name']
+
+def test_put(client):
+    story_params = { "story": { "name": "my awesome new story name" } }
+
+    response = client.put('/spaces/91322/stories/26392879', auth_token=user_token, params=story_params)
+    assert response.code == 200
+    story = response.body['story']
+    assert 'name'           in story.keys()
+    assert story['name'] == story_params['story']['name']
