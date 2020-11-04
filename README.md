@@ -91,7 +91,7 @@ body = {'story': {'name':"story_name"}}
 # >>> '{"story": {"name":"story_name"}}'
 ```
 
-### Spaces api
+### Spaces API
 
 Returns your current space name, published version and domain
 
@@ -111,9 +111,9 @@ The following arguments are required:
 response = spaces.me("your_access_token", options)
 ```
 
-### Stories api
+### Stories API
 
-Returns stories api instance
+Returns stories API instance
 
 ```python
 stories = client.stories()
@@ -133,16 +133,16 @@ _simple example:_
 ```python
 response = stories.list("your_access_token")
 ```
-_advanced example:_
+_advanced example: the second parameter is the query in dictionary format_
 ```python
-response = stories.list("public_token", {"query": { "with_tag": "tag_from_my_second_folder"}})
+response = stories.list("public_token", { "with_tag": "tag_from_my_second_folder"})
 ```
 
 Getting a draft stories list:
 
 _simple example:_
 ```python
-response = stories.list(preview_token, {"query": { "version": "draft"}})
+response = stories.list(preview_token, { "version": "draft"})
 ```
 
 ##### Get a story by id (GET /cdn/stories/:story_id)
@@ -152,6 +152,7 @@ Returns a single story by id (https://www.storyblok.com/docs/Delivery-Api/get-a-
 The following arguments are required:
 
  * __token__: Public token for published or private token for draft version
+ * __story_id__: Story identifier as String, eg: "41252"
 
 Getting a published story:
 ```python
@@ -160,12 +161,12 @@ response = stories.single("your_access_token", "41252")
 
 Getting a draft story:
 ```python
-response = stories.single("your_access_token", "41252", { "query": {"version": "draft"}})
+response = stories.single("your_access_token", "41252", {"version": "draft"})
 ```
 
-### Tags api
+### Tags API
 
-Returns tags api instance
+Returns tags API instance
 
 ```python
 tags = client.tags()
@@ -183,9 +184,9 @@ The following arguments are required:
 response = tags.list("your_access_token", "de", options)
 ```
 
-### Links api
+### Links API
 
-Returns links api instance
+Returns links API instance
 
 ```python
 links = client.links()
@@ -216,9 +217,9 @@ The following arguments are required:
 response = links.single("your_access_token", "148ee49a-ad81-4aff-b3d5-a2b4b6739e65", options)
 ```
 
-### Datasources api
+### Datasources API
 
-Returns datasources api instance
+Returns datasources API instance
 
 ```python
 datasources = client.datasources()
@@ -248,9 +249,9 @@ The following arguments are required:
 response = datasources.single("your_access_token", 'id')
 ```
 
-### DatasourceEntries api
+### DatasourceEntries API
 
-Returns datasource_entries api instance
+Returns datasource_entries API instance
 
 ```python
 datasource_entries = client.datasource_entries()
@@ -298,3 +299,6 @@ MIT
 
 ## Bug Reports
 Report [here](https://github.com/storyblok/storyblok-python-sdk/issues).
+
+## Questions
+Please feel free to ask [here](https://github.com/storyblok/storyblok-python-sdk/issues).
