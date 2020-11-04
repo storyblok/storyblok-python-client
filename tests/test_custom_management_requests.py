@@ -18,3 +18,12 @@ def test_get(client):
     first_tag = response.body['tags'][0]
     assert 'name'           in first_tag.keys()
     assert 'taggings_count' in first_tag.keys()
+
+def test_post(client):
+    story_params = { "story": { "name": "my awesome new story" } }
+
+    response = client.post('/spaces/91322/stories/', auth_token=user_token, params=story_params)
+    assert response.code == 201
+    story = response.body['story']
+    assert 'name'           in story.keys()
+    assert story['name'] == story_params['story']['name']
