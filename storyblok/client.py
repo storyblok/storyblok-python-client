@@ -42,7 +42,7 @@ class Client(object):
     def datasource_entries(self):
         """Returns DatasourceEntries api instance
         """
-        return DatasourceEntries(self.http_client)
+        return DatasourceEntries(self)
 
     def get(self, path, token='', auth_token='', params={}, options={}):
       """ Makes a custom GET request
