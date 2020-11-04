@@ -36,3 +36,15 @@ def test_put(client):
     story = response.body['story']
     assert 'name'           in story.keys()
     assert story['name'] == story_params['story']['name']
+
+def test_delete(client):
+    # creates a story to be deleted by the test
+    story_params = { "story": { "name": "my awesome new story" } }
+    story_create_response = client.post('/spaces/91322/stories/', auth_token=user_token, params=story_params)
+
+    story_id = story_create_response.body['story']['id']
+    response = client.delete('/spaces/91322/stories/'+ str(story_id), auth_token=user_token)
+    assert response.code == 200
+    story = response.body['story']
+    assert 'name'           in story.keys()
+    assert story['name'] == story_params['story']['name']

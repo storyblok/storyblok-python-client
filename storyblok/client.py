@@ -78,3 +78,15 @@ class Client(object):
 
       res = self.http_client.put(path, params, options)
       return res
+
+    def delete(self, path, token='', auth_token='', params={}, options={}):
+      """ Makes a custom DELETE request
+      """
+
+      if(token):
+        params['token'] = token
+      else:
+        options['headers'] = {'Authorization': auth_token }
+
+      res = self.http_client.delete(path, params, options)
+      return res
