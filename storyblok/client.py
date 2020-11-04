@@ -32,7 +32,7 @@ class Client(object):
     def links(self):
         """Returns links api instance
         """
-        return Links(self.http_client)
+        return Links(self)
 
     def datasources(self):
         """Returns Datasources api instance

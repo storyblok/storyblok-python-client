@@ -1,5 +1,3 @@
-from .param_adapter import body
-
 class Links(object):
 
     """Returns links api instance
@@ -17,7 +15,7 @@ class Links(object):
             token: Public token for published or private token for draft version
         """
 
-        response = self.client.get('/cdn/links/', body(token, options), options)
+        response = self.client.get('/cdn/links/', token=token, options=options)
 
         return response
 
@@ -31,7 +29,7 @@ class Links(object):
             id: Uuid of the link
         """
 
-        response = self.client.get('/cdn/links/' + id + '', body(token, options), options)
+        response = self.client.get('/cdn/links/' + id, token=token, options=options)
 
         return response
 
