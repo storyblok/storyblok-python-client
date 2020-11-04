@@ -1,4 +1,5 @@
 from .http_client import HttpClient
+from .api.sb_auth import sb_set_auth
 
 # Assign all the api classes
 from .api.spaces import Spaces
@@ -46,47 +47,34 @@ class Client(object):
     def get(self, path, token='', auth_token='', params={}, options={}):
       """ Makes a custom GET request
       """
+      sb_auth = sb_set_auth(token=token, auth_token=auth_token, params=params, options=options)
 
-      if(token):
-        params['token'] = token
-      else:
-        options['headers'] = {'Authorization': auth_token }
-
-      res = self.http_client.get(path, params, options)
+      res = self.http_client.get(path, sb_auth['params'], sb_auth['options'])
       return res
 
     def post(self, path, token='', auth_token='', params={}, options={}):
       """ Makes a custom POST request
       """
 
-      if(token):
-        params['token'] = token
-      else:
-        options['headers'] = {'Authorization': auth_token }
+      sb_auth = sb_set_auth(token=token, auth_token=auth_token, params=params, options=options)
 
-      res = self.http_client.post(path, params, options)
+      res = self.http_client.post(path, sb_auth['params'], sb_auth['options'])
       return res
 
     def put(self, path, token='', auth_token='', params={}, options={}):
       """ Makes a custom PUT request
       """
 
-      if(token):
-        params['token'] = token
-      else:
-        options['headers'] = {'Authorization': auth_token }
+      sb_auth = sb_set_auth(token=token, auth_token=auth_token, params=params, options=options)
 
-      res = self.http_client.put(path, params, options)
+      res = self.http_client.put(path, sb_auth['params'], sb_auth['options'])
       return res
 
     def delete(self, path, token='', auth_token='', params={}, options={}):
       """ Makes a custom DELETE request
       """
 
-      if(token):
-        params['token'] = token
-      else:
-        options['headers'] = {'Authorization': auth_token }
+      sb_auth = sb_set_auth(token=token, auth_token=auth_token, params=params, options=options)
 
-      res = self.http_client.delete(path, params, options)
+      res = self.http_client.delete(path, sb_auth['params'], sb_auth['options'])
       return res
