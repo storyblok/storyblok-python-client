@@ -16,7 +16,7 @@ class Datasources(object):
         Args:
             token: Public token
         """
-        response = self.client.get('/cdn/datasources/', body(token, options), options)
+        response = self.client.get('/cdn/datasources/', token=token, options=options)
 
         return response
 
@@ -28,6 +28,6 @@ class Datasources(object):
         Args:
             token: Public token
         """
-        response = self.client.get('/cdn/datasources/' + id, body(token, options), options)
+        response = self.client.get('/cdn/datasources/' + id, token=token, options=options)
 
         return response

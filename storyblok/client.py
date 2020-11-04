@@ -37,7 +37,7 @@ class Client(object):
     def datasources(self):
         """Returns Datasources api instance
         """
-        return Datasources(self.http_client)
+        return Datasources(self)
 
     def datasource_entries(self):
         """Returns DatasourceEntries api instance
