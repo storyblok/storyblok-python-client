@@ -279,6 +279,12 @@ Inside of the directory project set the `PYTHONPATH` to help the test suite find
 export PYTHONPATH=.
 ```
 
+The management tests also need from an environment variable called USER_TOKEN set, but proceed with **CAUTION**, because the changes made by the tests on your space are persisted
+
+```bash
+export USER_TOKEN=<user_token>
+```
+
 Run the test suite:
 ```bash
 pytest

@@ -42,3 +42,15 @@ class Client(object):
         """Returns DatasourceEntries api instance
         """
         return DatasourceEntries(self.http_client)
+
+    def get(self, path, token='', auth_token='', params={}, options={}):
+      """ Makes a custom get request
+      """
+
+      if(token):
+        params['token'] = token
+      else:
+        options['headers'] = {'Authorization': auth_token }
+
+      res = self.http_client.get(path, params, options)
+      return res
