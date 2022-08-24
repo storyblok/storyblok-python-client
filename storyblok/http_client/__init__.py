@@ -11,7 +11,6 @@ from .error_handler import ErrorHandler
 from .request_handler import RequestHandler
 from .response import Response
 from .response_handler import ResponseHandler
-from pprint import pprint
 
 class HttpClient(object):
 
@@ -34,8 +33,6 @@ class HttpClient(object):
             self.base = 'https://api' + region + '.storyblok.com'
         else:
             self.base = self.options['base']
-        
-        pprint(self.base)
 
         self.headers = {
             'user-agent': self.options['user_agent']
