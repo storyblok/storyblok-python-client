@@ -12,7 +12,6 @@ from .request_handler import RequestHandler
 from .response import Response
 from .response_handler import ResponseHandler
 
-
 class HttpClient(object):
 
     """Main HttpClient which is used by API classes"""
@@ -22,12 +21,18 @@ class HttpClient(object):
         self.options = {
             'base': 'https://api.storyblok.com',
             'api_version': 'v1',
+            'api_region': None,
             'user_agent': 'alpaca/0.2.1 (https://github.com/pksunkara/alpaca)'
         }
 
         self.options.update(options)
 
-        self.base = self.options['base']
+        if not 'base' in options:
+            region = '-' + self.options['api_region'] if self.options['api_region'] else ''
+
+            self.base = 'https://api' + region + '.storyblok.com'
+        else:
+            self.base = self.options['base']
 
         self.headers = {
             'user-agent': self.options['user_agent']
