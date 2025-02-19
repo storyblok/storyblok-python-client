@@ -1,5 +1,8 @@
 # storyblok-python-sdk
 
+> [!WARNING]  
+> This package is deprecated and will not be maintained.
+
 **Warning: It's currently not working with US endpoints.** 
 
 Storyblok API library client for python.
