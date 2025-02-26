@@ -8,7 +8,7 @@ except ImportError:
 
 setup(
     name='storyblok',
-    version='0.1.2',
+    version='0.1.3',
     description='Storyblok API library client for python',
     author='Dominik Angerer',
     author_email='da@storyblok.com',
